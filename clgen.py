@@ -1,6 +1,12 @@
 # clgen.py
 import click
-from config import configure_profile, add_cv, delete_cv, display_cv
+from config import (
+    configure_profile,
+    add_cv,
+    delete_cv,
+    display_cv,
+    generate_cover_letter,
+)
 
 
 @click.group()
@@ -31,6 +37,12 @@ def cv_delete():
 def cv_display():
     """Display an existing CV."""
     display_cv()
+
+
+@clgen.command()
+def generate():
+    """Generate a cover letter."""
+    generate_cover_letter()
 
 
 if __name__ == "__main__":
