@@ -2,3 +2,4 @@ clgen-env/
 .env
 __pycache__/
 cvs
+letters

@@ -4,8 +4,6 @@ import click
 import os
 
 import datetime
-import frontmatter
-from reportlab.pdfgen import canvas
 from openai import OpenAI
 
 client = OpenAI(
@@ -142,9 +140,6 @@ def call_openai_api(messages, temperature=0.7):
         model="gpt-3.5-turbo-1106",
         temperature=temperature,
     )
-    print("OpenAI Response", response)
-    print("Choice", response.choices[0])
-    print("Text", response.choices[0].message.content)
     return response.choices[0].message.content.strip()
 
 
@@ -154,12 +149,12 @@ def handle_response(response, prompt, company_name, messages):
         type=click.Choice(["a", "e", "r"], case_sensitive=False),
     )
     if action == "a":
-        save_markdown_and_pdf(response, company_name)
+        save_markdown(response, company_name)
     elif action == "e":
         user_prompt = click.prompt("Enter your prompt for editing")
 
         # ? Append previous response to message history
-        messages.push(
+        messages.append(
             {
                 "role": "assistant",
                 "content": response,
@@ -167,7 +162,7 @@ def handle_response(response, prompt, company_name, messages):
         )
 
         # ? Append new prompt to history
-        messages.push(
+        messages.append(
             {
                 "role": "user",
                 "content": user_prompt,
@@ -181,7 +176,7 @@ def handle_response(response, prompt, company_name, messages):
         handle_response(new_response, prompt, company_name, messages)
 
 
-def save_markdown_and_pdf(cover_letter, company_name):
+def save_markdown(cover_letter, company_name):
     profile = load_profile_from_env()
     today = datetime.date.today().strftime("%Y-%m-%d")
     file_name = f"{today}-{company_name.replace(' ', '_')}"
@@ -203,23 +198,13 @@ date: "{today}"
 
 {cover_letter}
 """
-    md_file_path = f"{file_name}.md"
+    md_file_path = f"letters/{file_name}.md"
     with open(md_file_path, "w") as md_file:
         md_file.write(markdown_content)
 
     click.edit(filename=md_file_path)
 
-    convert_markdown_to_pdf(md_file_path, f"{file_name}.pdf")
-
-
-def convert_markdown_to_pdf(md_file_path, pdf_file_path):
-    post = frontmatter.load(md_file_path)
-    c = canvas.Canvas(pdf_file_path)
-    c.drawString(100, 750, post.metadata["title"])
-    c.drawString(100, 735, f"Author: {post.metadata['author']}")
-    c.drawString(100, 720, f"Date: {post.metadata['date']}")
-    c.drawString(100, 705, post.content)
-    c.save()
+    # convert_markdown_to_pdf(md_file_path, f"{file_name}.pdf")
 
 
 def load_profile_from_env():
@@ -234,5 +219,6 @@ def load_profile_from_env():
     }
 
 
-# Make sure the cvs directory exists
+# Make sure the cvs and letter directory exists
 os.makedirs("cvs", exist_ok=True)
+os.makedirs("letters", exist_ok=True)
