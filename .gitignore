@@ -1,5 +1,8 @@
 clgen-env/
 .env
 __pycache__/
-cvs
-letters
+clgen/cvs
+clgen/letters
+dist
+build
+clgen.egg-info

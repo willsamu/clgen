@@ -1,6 +1,10 @@
 # clgen.py
 import click
-from config import (
+import sys
+
+sys.path.insert(0, "./config")
+
+from clgen.config import (
     configure_profile,
     add_cv,
     delete_cv,

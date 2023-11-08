@@ -119,7 +119,7 @@ def generate_cover_letter():
 "JOB DESCRIPTION":
 {job_description}
 
-Do not focus too much on the technical details of the cv and do not repeat it, but rather emphasize why the candidate is a good fit for the company and the position.
+Do not focus too much on the technical details of the cv and do not repeat it, but rather emphasize why the candidate is a good fit for the company and the position based on the skills, do not focus on experience too much.
 Response only with the letter content text, not any headings or similar.
 """
 
