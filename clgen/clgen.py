@@ -44,9 +44,15 @@ def cv_display():
 
 
 @clgen.command()
-def generate():
+@click.option(
+    "--model",
+    default="gpt-4-1106-preview",
+    show_default=True,
+    help="The model to use for generation.",
+)
+def generate(model):
     """Generate a cover letter."""
-    generate_cover_letter()
+    generate_cover_letter(model)
 
 
 if __name__ == "__main__":
