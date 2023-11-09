@@ -106,3 +106,17 @@ Rewrite the letter with a stronger focus on me being a good match for the positi
 ### Regenerate
 
 If you are not satisfied with the result, you can regenerate the last input with a different temperature (aka. creativeness). Default tempeature is `0.7`, where a higher value (e.g. `1.5`) would create in more creative writing, be aware about hallucinations though.
+
+# Disclaimer
+
+## Costs
+
+> By using this open source project, you agree to provide your own OpenAI API key to access the OpenAI services. You acknowledge that you will be solely responsible for any costs incurred by the use of your OpenAI API key in connection with this project. The usage of the OpenAI API through this project will be billed to your account with OpenAI according to their pricing policies.
+
+> The author(s) of this project shall not be held liable for any charges, fees, costs, or expenses that you may incur as a result of your use of your OpenAI API key with this project. It is your responsibility to secure your API key and to ensure that any use of the key complies with OpenAI's terms and conditions. You should monitor your usage to prevent unexpected charges, as the author(s) provide no warranty or guarantee regarding the cost or billing of your use of the OpenAI API.
+
+## Data Privacy
+
+> When using this open source project, you may input information that will be processed by the OpenAI API. Please be aware that any data you provide may be shared with OpenAI and will be subject to OpenAI's privacy policy. The author(s) of this project do not have control over, and assume no responsibility for, the data privacy practices of OpenAI or any data handling once it has been transmitted to OpenAI's systems.
+
+> You are responsible for ensuring that any data you input into the tool complies with data protection laws applicable to you and does not infringe upon the rights of any third parties. It is your duty to review OpenAI's privacy policy to understand how your data will be used and to ensure that you consent to this usage. By using your OpenAI API key in conjunction with this project, you acknowledge and agree to OpenAI's data processing practices as outlined in their privacy policy.
